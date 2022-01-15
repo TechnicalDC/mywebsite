@@ -1,0 +1,16 @@
+:root {
+	--background: #FFFFFF;
+	--foreground: #111111;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: var(--background);
+	color: var(--foreground);
+	font: "Roboto";
+
+}
