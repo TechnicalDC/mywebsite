@@ -51,7 +51,7 @@ nav a {
 .inner-wrapper {
 	display: flex;
 	flex-direction: row;
-	width: 400vw;
+	width: 100vw;
 	transform: rotate(90deg) translateY(-100vh);
 	transform-origin: top left;
 }
