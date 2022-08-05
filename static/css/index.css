@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
-	--background: #FFFFFF;
-	--foreground: #111111;
+	--background: #040F3D;
+	--foreground: #C6C4C5;
+	--highlight: #4BFFA5;
 }
 
 * {
@@ -20,6 +21,10 @@ body {
 
 h1, h2, h3, h3, h5, h6 {
 	font-family: "Bebas Neue";
+	color: var(--highlight);
+}
+h1 {
+	font-size: 100px;
 }
 
 nav {
@@ -35,6 +40,7 @@ nav {
 nav a {
 	color: var(--foreground);
 	text-decoration: none;
+	transform: rotateZ(-90deg);
 }
 
 .content {

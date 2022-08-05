@@ -16,20 +16,9 @@
 	</nav>
 	<div class="outer-wrapper">
 		<div class="inner-wrapper">
-			<div class="content home" id="home">
-				<h1>HOME</h1>
-				{{ data.title }}
-			</div>
-			<div class="content about" id="about">
-				<h1>ABOUT</h1>
-				{{ data.name }}
-			</div>
-			<div class="content skills" id="skills">
-				<h1>SKILLS</h1>
-			</div>
-			<div class="content contact" id="contact">
-				<h1>CONTACT</h1>
-			</div>
+        {% block section %}
+
+        {% endblock %}
 		</div>
 	</div>
 </body>
