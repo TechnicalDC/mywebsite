@@ -8,10 +8,9 @@
 <body>
 	<nav>
 		<div class="navbar">
-			<a class="links" href="home">Home</a>
-			<a class="links" href="about">About</a>
-			<a class="links" href="skills">Skills</a>
-			<a class="links" href="contact">Contact</a>
+			{% for link in links %}
+			<a class="links" href="{{ link.url }}">{{ link.name }}</a>
+			{% endfor %}
 		</div>
 	</nav>
 	<div class="outer-wrapper">
