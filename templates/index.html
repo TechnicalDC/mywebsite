@@ -3,13 +3,13 @@
 		<title>
 			Dilip's Website
 		</title>
-		<link rel="stylesheet" href="static/css/index.css">
+		<!-- <link rel="stylesheet" href="static/css/index.css"> -->
 	</head>
 <body>
 	<nav>
 		<div class="navbar">
-			{% for link in links %}
-			<a class="links" href="{{ link.url }}">{{ link.name }}</a>
+			{% for section in sections %}
+			<a class="links" href="{{ section.url }}">{{ section.icon }}</a>
 			{% endfor %}
 		</div>
 	</nav>

@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block section %}
+<div class="content admin" id="admin">
+	<div class="sidebar">
+		{% for section in data %}
+		<a href="{{ section.url }}" style="display:block;">{{ section.name }}</a>
+		{% endfor %}
+	</div>
+	<div class="view">
+		<h1>Admin Portal</h1>
+		<form class="form" method="POST">
+			{{ form.hidden_tag() }}
+			{{ form.name.label }}
+			{{ form.name() }}
+			{{ form.url.label }}
+			{{ form.url() }}
+			{{ form.icon.label }}
+			{{ form.icon() }}
+			{{ form.submit() }}
+		</form>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Url</th>
+				<th>Icon</th>
+				<th>Actions</th>
+			</tr>
+		{% for section in data %}
+		<tr>
+			<td>{{ section.id }}</td>
+			<td>{{ section.name }}</td>
+			<td>{{ section.url }}</td>
+			<td>{{ section.icon }}</td>
+			<td></td>
+		</tr>
+		{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock %}
+
