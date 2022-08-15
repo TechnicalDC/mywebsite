@@ -2,10 +2,11 @@
 {% block section %}
 <div class="content skills" id="skills">
 	<h1>SKILL</h1>
-	{{ data.title }}
-	<p>
-	{{ data.name }}
-	</p>
+	{% for skill in data %}
+	{{ skill.name }}
+	{{ skill.progress }}
+	</br>
+	{% endfor %}
 </div>
 {% endblock %}
 

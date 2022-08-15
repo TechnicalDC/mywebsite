@@ -1,11 +1,17 @@
 {% extends 'index.html' %}
 {% block section %}
 <div class="content contact" id="contact">
-	<h1>{{ data.title }}</h1>
-	
-	<p>
-	{{ data.name }}
-	</p>
+	<h1>FORM</h1>
+	<form class="form" action="/contact" method = 'post'>
+		{{ form.hidden_tag() }}
+		{{ form.name.label }}
+		{{ form.name() }}
+		{{ form.email.label }}
+		{{ form.email() }}
+		{{ form.message.label }}
+		{{ form.message() }}
+		{{ form.submit() }}
+	</form>
 </div>
 {% endblock %}
 
