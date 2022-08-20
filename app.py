@@ -1,3 +1,4 @@
+# IMPORTS
 from flask import Flask, render_template, request
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
@@ -7,6 +8,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired
 
+# CONFIGUATION
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///app.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -15,12 +17,14 @@ app.config['SECRET_KEY'] = "HelloWorld"
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+# FORM
 class ContactForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
     message = TextAreaField('Message', validators=[DataRequired()])
     submit = SubmitField("Submit")
 
+# TABLES
 class Configuation(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     conf_name = db.Column(db.String, unique = True)
@@ -55,6 +59,7 @@ class Projects(db.Model):
     desc = db.Column(db.Text, nullable = False)
     url = db.Column(db.Text, nullable = False)
 
+# ADMIN
 admin_area = Admin(app)
 admin_area.add_view(ModelView(Configuation, db.session))
 admin_area.add_view(ModelView(Sections, db.session))
@@ -63,6 +68,7 @@ admin_area.add_view(ModelView(Skills, db.session))
 admin_area.add_view(ModelView(Projects, db.session))
 admin_area.add_view(ModelView(Contact, db.session))
 
+# VIEWS
 @app.route('/')
 def home():
     sections = Sections.query.filter_by(is_active = True).all()
@@ -105,7 +111,7 @@ def contact():
             form.message.data = None
     return render_template("contact.html", form = form)
 
-
+# MAIN
 if __name__ == '__main__':
     app.run(debug = True)
 
