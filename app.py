@@ -1,5 +1,5 @@
 # IMPORTS
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_sqlalchemy import SQLAlchemy
@@ -33,6 +33,7 @@ class Configuation(db.Model):
 class Sections(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, unique = True, nullable = False)
+    disp_name = db.Column(db.String, nullable = False, default = name)
     url = db.Column(db.String, nullable = False)
     icon = db.Column(db.String, nullable = False)
     is_active = db.Column(db.Boolean, default = True)
@@ -70,6 +71,10 @@ admin_area.add_view(ModelView(Contact, db.session))
 
 # VIEWS
 @app.route('/')
+def index():
+    return redirect(url_for('home'))
+
+@app.route('/home')
 def home():
     sections = Sections.query.filter_by(is_active = True).all()
     return render_template("home.html", sections = sections)
@@ -78,22 +83,27 @@ def home():
 def about():
     data = None
     section = Sections.query.filter_by(name = "about", is_active = True).first()
+    sections = None
     if section is not None: 
+        sections = Sections.query.filter_by(is_active = True).all()
         data = About.query.filter_by(default = True).first()
-    return render_template("about.html", data = data)
+    return render_template("about.html", data = data, sections = sections)
 
 @app.route('/skills')
 def skills():
     skills = None
+    sections = None
     section = Sections.query.filter_by(name = "skills", is_active = True).first()
     if section is not None: 
         skills = Skills.query.all()
-    return render_template("skills.html", data = skills)
+        sections = Sections.query.filter_by(is_active = True).all()
+    return render_template("skills.html", data = skills, sections = sections)
 
 @app.route('/contact', methods=['POST', 'GET'])
 def contact():
     form = None
     section = Sections.query.filter_by(name = "contact", is_active = True).first()
+    sections = Sections.query.filter_by(is_active = True).all()
     if section is not None: 
         form = ContactForm()
         name = None
@@ -109,7 +119,13 @@ def contact():
             form.name.data = None
             form.email.data = None
             form.message.data = None
-    return render_template("contact.html", form = form)
+    return render_template("contact.html", form = form, sections = sections)
+
+@app.route('/projects')
+def project():
+    sections = Sections.query.filter_by(is_active = True).all()
+    return render_template("projects.html", sections = sections)
+
 
 # MAIN
 if __name__ == '__main__':

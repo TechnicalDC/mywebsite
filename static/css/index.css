@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
-	--background: #040F3D;
-	--foreground: #C6C4C5;
-	--highlight: #4BFFA5;
+	--background: #051622;
+	--foreground: #DEB992;
+	--highlight: #1BA098;
+	--secondary-highlight: #036862;
 }
 
 * {
@@ -34,18 +35,28 @@ nav {
 	z-index: 1000;
 	height: 100%;
 	width: 40px;
-	background-color: var(--background);
 }
 
-nav a {
+.navbar {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.navbar a {
 	color: var(--foreground);
 	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 30px 0px;
 	transform: rotateZ(-90deg);
 }
 
 .content {
 	height: 100vh;
 	width: 100vw;
+	padding: 10%;
 }
 
 .inner-wrapper {
