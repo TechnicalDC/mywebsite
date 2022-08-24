@@ -72,12 +72,13 @@ admin_area.add_view(ModelView(Contact, db.session))
 # VIEWS
 @app.route('/')
 def index():
-    return redirect(url_for('home'))
+    sections = Sections.query.filter_by(is_active = True).all()
+    return render_template("home.html", sections = sections)
+    
 
 @app.route('/home')
 def home():
-    sections = Sections.query.filter_by(is_active = True).all()
-    return render_template("home.html", sections = sections)
+    return redirect(url_for('/'))
 
 @app.route('/about')
 def about():
