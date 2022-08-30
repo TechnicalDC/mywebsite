@@ -78,7 +78,8 @@ def index():
 
 @app.route('/home')
 def home():
-    return redirect(url_for('/'))
+    sections = Sections.query.filter_by(is_active = True).all()
+    return render_template("home.html", sections = sections)
 
 @app.route('/about')
 def about():

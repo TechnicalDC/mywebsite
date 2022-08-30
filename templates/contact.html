@@ -4,12 +4,12 @@
 	<h1>FORM</h1>
 	<form class="form" action="/contact" method = 'post'>
 		{{ form.name.label }}
-		{{ form.name() }}
+		{{ form.name(class_="input", placeholder = "Enter name") }}
 		{{ form.email.label }}
-		{{ form.email() }}
+		{{ form.email(class_="input", placeholder = "Enter email") }}
 		{{ form.message.label }}
-		{{ form.message() }}
-		{{ form.submit() }}
+		{{ form.message(class_="input", placeholder = "Enter message") }}
+		{{ form.submit(class_="submit") }}
 	</form>
 </div>
 {% endblock %}
