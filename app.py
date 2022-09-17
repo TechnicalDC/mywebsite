@@ -1,5 +1,5 @@
 # IMPORTS
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_sqlalchemy import SQLAlchemy
@@ -127,7 +127,6 @@ def contact():
 def project():
     sections = Sections.query.filter_by(is_active = True).all()
     return render_template("projects.html", sections = sections)
-
 
 # MAIN
 if __name__ == '__main__':
