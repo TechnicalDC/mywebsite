@@ -9,15 +9,17 @@
 	<nav>
 		<div class="navbar">
 			{% for section in sections %}
-			<a class="links" href="{{ section.url }}">{{ section.disp_name }}</a>
+			<a class="links" href="#{{ section.url }}">{{ section.disp_name }}</a>
 			{% endfor %}
 		</div>
 	</nav>
 	<div class="outer-wrapper">
 		<div class="inner-wrapper">
-        {% block section %}
-
-        {% endblock %}
+			{% block content %}
+				{% for section in sections %}
+					{% include section.name + '.html' %}
+				{% endfor %}
+			{% endblock %}
 		</div>
 	</div>
 </body>

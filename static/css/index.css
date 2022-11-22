@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('../fonts/MontserratBlack-3zOvZ.ttf')
 
 :root {
 	--background: #051622;
@@ -14,18 +15,21 @@
 }
 
 body {
-	background-color: var(--background);
-	color: var(--foreground);
+	/* background-color: var(--background); */
+	background-color: #0D4C92;
+	color: #CFF5E7;
 	font-family: "Roboto";
-	font-size: 12px;
+	font-size: 16px;
 }
 
-h1, h2, h3, h3, h5, h6 {
-	font-family: "Bebas Neue";
-	color: var(--highlight);
-}
 h1 {
+	font-family: "Montserrat";
 	font-size: 100px;
+} 
+h2, h3, h3, h5, h6 {
+	font-family: "Montserrat";
+	font-size: 50px;
+	color: #59C1BD;
 }
 
 nav {
@@ -60,32 +64,52 @@ nav {
 }
 
 .inner-wrapper {
-	display: flex;
-	flex-direction: row;
-	width: 100vw;
-	transform: rotate(90deg) translateY(-100vh);
-	transform-origin: top left;
+	/* display: flex; */
+	/* flex-direction: row; */
+	/* width: 300vw; */
+	/* transform: rotate(90deg) translateY(-100vh); */
+	/* transform-origin: top left; */
 }
 
 .outer-wrapper {
-	position: absolute;
-	width: 100vh;
-	height: 100vw;
-	transform: rotate(-90deg) translateX(-100vh);
-	transform-origin: top left;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
+	/* width: 100vh; */
+	/* height: 100vw; */
+	/* transform: rotate(-90deg) translateX(-100vh); */
+	/* transform-origin: top left; */
+	/* overflow-y: scroll; */
+	/* overflow-x: hidden; */
+	/* position: absolute; */
+	/* scrollbar-width: none; */
+	/* -ms-overflow-style: none; */
 }
 ::-webkit-scrollbar {
 	display: none;
+}
+
+.home {
+	padding: 0%;
+}
+
+.title {
+	margin: auto;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	font-size: 150px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.about > div {
+	width: 50%;
 }
 
 .form .input {
 	display: block;
 	background-color: var(--background);
 	width: 50%;
+	color: var(--foreground);
 	border: 0px;
 	padding: 10px;
 	margin: 10px 0px;

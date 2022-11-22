@@ -73,33 +73,15 @@ admin_area.add_view(ModelView(Contact, db.session))
 @app.route('/')
 def index():
     sections = Sections.query.filter_by(is_active = True).all()
-    return render_template("home.html", sections = sections)
-    
-
-@app.route('/home')
-def home():
-    sections = Sections.query.filter_by(is_active = True).all()
-    return render_template("home.html", sections = sections)
-
-@app.route('/about')
-def about():
-    data = None
-    section = Sections.query.filter_by(name = "about", is_active = True).first()
-    sections = None
-    if section is not None: 
-        sections = Sections.query.filter_by(is_active = True).all()
-        data = About.query.filter_by(default = True).first()
-    return render_template("about.html", data = data, sections = sections)
-
-@app.route('/skills')
-def skills():
-    skills = None
-    sections = None
-    section = Sections.query.filter_by(name = "skills", is_active = True).first()
-    if section is not None: 
-        skills = Skills.query.all()
-        sections = Sections.query.filter_by(is_active = True).all()
-    return render_template("skills.html", data = skills, sections = sections)
+    about = About.query.filter_by(default = True).first()
+    skills = Skills.query.all()
+    form = ContactForm()
+    data = {
+        "about" : about,
+        "skills" : skills,
+        "form" : form
+    }
+    return render_template("index.html", sections = sections, data = data)
 
 @app.route('/contact', methods=['POST', 'GET'])
 def contact():
@@ -121,14 +103,8 @@ def contact():
             form.name.data = None
             form.email.data = None
             form.message.data = None
-    return render_template("contact.html", form = form, sections = sections)
-
-@app.route('/projects')
-def project():
-    sections = Sections.query.filter_by(is_active = True).all()
-    return render_template("projects.html", sections = sections)
+    return render_template("home.html", form = form, sections = sections)
 
 # MAIN
 if __name__ == '__main__':
     app.run(debug = True)
-

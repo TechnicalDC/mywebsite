@@ -1,16 +1,14 @@
-{% extends 'index.html' %}
-{% block section %}
-<div class="content contact" id="contact">
-	<h1>FORM</h1>
+<div class="content {{ section.name }}" id="{{ section.name }}">
+	<h1>
+		<span>.</span>{{ section.disp_name }}
+	</h1>
 	<form class="form" action="/contact" method = 'post'>
-		{{ form.name.label }}
-		{{ form.name(class_="input", placeholder = "Enter name") }}
-		{{ form.email.label }}
-		{{ form.email(class_="input", placeholder = "Enter email") }}
-		{{ form.message.label }}
-		{{ form.message(class_="input", placeholder = "Enter message") }}
-		{{ form.submit(class_="submit") }}
+		{{ data.form.name.label }}
+		{{ data.form.name(class_="input", placeholder = "Enter name") }}
+		{{ data.form.email.label }}
+		{{ data.form.email(class_="input", placeholder = "Enter email") }}
+		{{ data.form.message.label }}
+		{{ data.form.message(class_="input", placeholder = "Enter message") }}
+		{{ data.form.submit(class_="submit") }}
 	</form>
 </div>
-{% endblock %}
-

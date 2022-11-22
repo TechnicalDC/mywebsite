@@ -1,12 +1,10 @@
-{% extends 'index.html' %}
-{% block section %}
 <div class="content skills" id="skills">
-	<h1>SKILL</h1>
+	<h1>
+		<span>.</span>{{ section.disp_name }}
+	</h1>
 	{% for skill in data %}
 	{{ skill.name }}
 	{{ skill.progress }}
 	</br>
 	{% endfor %}
 </div>
-{% endblock %}
-
