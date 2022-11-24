@@ -1,13 +1,15 @@
 <div class="content {{ section.name }}" id="{{ section.name }}">
-	<h1>
-		<span>.</span>{{ section.disp_name }}
-	</h1>
-	<div class="image">
-		<img class="profile" src="{{ url_for('static', filename=last_id_jpg) }}" alt="" accept="image/*">
-	</div>
-	<div class="text">
-		<p>
-		{{ data.about.text }}
-		</p>
+	<h2>
+		<span class="dot">.</span>{{ section.disp_name }}
+	</h2>
+	<div class="about-grid">
+		<div class="image">
+			<img class="profile" src="{{ url_for('static', filename=last_id_jpg) }}" alt="" accept="image/*">
+		</div>
+		<div class="text">
+			<p>
+			{{ data.about.text }}
+			</p>
+		</div>
 	</div>
 </div>

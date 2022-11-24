@@ -1,7 +1,7 @@
 <div class="content {{ section.name }}" id="{{ section.name }}">
-	<h1>
-		<span>.</span>{{ section.disp_name }}
-	</h1>
+	<h2>
+		<span class="dot">.</span>{{ section.disp_name }}
+	</h2>
 	<form class="form" action="/contact" method = 'post'>
 		{{ data.form.name.label }}
 		{{ data.form.name(class_="input", placeholder = "Enter name") }}
